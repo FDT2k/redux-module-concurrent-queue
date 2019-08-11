@@ -9,8 +9,8 @@ export default (baseSelector) =>{
 
   const queueSelectors = createQueueSelectors(createSelector(baseSelector,state=>state.queue))
   let {selectQueue} = queueSelectors.selectors
-  const jobSelectors = {selectJobs}=  createJobSelectors(createSelector(baseSelector,state => state.jobs))
-
+  const jobSelectors =  createJobSelectors(createSelector(baseSelector,state => state.jobs))
+  let {selectJobs} = jobSelectors
   const selectCurrentJob = createSelector(
     baseSelector,
     state => state.currentJob
