@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import { scheduler_status } from  './actions'
-import  createSelectors as createJobSelectors  from '../Job/selectors'
-import  createSelectors as createQueueSelectors  from '../Queue/selectors'
+import  createJobSelectors  from '../Job/selectors'
+import  createQueueSelectors  from '../Queue/selectors'
 
 import { queue_item_status } from '../Queue/actions'
 
