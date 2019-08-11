@@ -10,7 +10,7 @@ export default (baseSelector) =>{
   const currentOrNextJobID = createSelector(
       selectJobs,
       items => {
-        iterate = Object.keys(items);
+        let iterate = Object.keys(items);
         return iterate.find(job_id=>{return items[job_id].status == job_status.ACTIVE || items[job_id].status == job_status.QUEUE})
       }
     )

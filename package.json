@@ -18,7 +18,8 @@
     "@geekagency/composite-js": "^0.0.6",
     "@geekagency/redux-action-types": "^1.0.5",
     "@geekagency/redux-registry": "^1.2.11",
-    "@geekagency/redux-reselect": "^1.0.7"
+    "@geekagency/redux-reselect": "^1.0.7",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

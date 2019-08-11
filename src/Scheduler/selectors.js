@@ -8,9 +8,8 @@ import { queue_item_status } from '../Queue/actions'
 export default (baseSelector) =>{
 
   const queueSelectors = createQueueSelectors(createSelector(baseSelector,state=>state.queue))
-  let {selectQueue} = queueSelectors.selectors
   const jobSelectors =  createJobSelectors(createSelector(baseSelector,state => state.jobs))
-  let {selectJobs} = jobSelectors
+
   const selectCurrentJob = createSelector(
     baseSelector,
     state => state.currentJob
@@ -29,12 +28,18 @@ export default (baseSelector) =>{
     baseSelector,
     state => state.maxRetry
   )
+
+  let {selectJobs} = jobSelectors
+
   const selectActiveJob = createSelector(
     [selectCurrentJob,selectJobs],
     (job_id, jobs)=>{
       return jobs[job_id]
     }
   )
+
+  let {selectQueue} = queueSelectors.selectors
+  
 
   const selectCurrentJobQueue = createSelector(
     [selectQueue,selectCurrentJob],
