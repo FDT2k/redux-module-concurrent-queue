@@ -1,6 +1,6 @@
 {
   "name": "@geekagency/redux-module-concurrent-queue",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Redux module to manage a concurrent job queue",
   "main": "index.js",
   "scripts": {
