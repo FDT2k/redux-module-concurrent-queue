@@ -17,7 +17,7 @@ export const scheduler_status ={
   PAUSED: 2
 }
 
-export const createActionCreators =  (ActionTypes)=>{
+export const makeActionCreators =  (ActionTypes)=>{
 
   const jobActionCreators = createJobActionCreators(ActionTypes.job);
   const {set_job_status,create_job} = jobActionCreators
@@ -60,6 +60,3 @@ export const ActionTypes  = combineActionTypes(
   actionGroup('job')(jobActionTypes),
   actionGroup('queue')(queueActionTypes)
 )
-
-
-export const getActionCreators = ()=>createActionCreators(ActionTypes())
