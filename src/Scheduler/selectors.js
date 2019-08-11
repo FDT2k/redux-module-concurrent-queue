@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import { scheduler_status } from  './actions'
-import { createSelectors as createJobSelectors } from '../Job/selectors'
-import { createSelectors as createQueueSelectors } from '../Queue/selectors'
+import  createSelectors as createJobSelectors  from '../Job/selectors'
+import  createSelectors as createQueueSelectors  from '../Queue/selectors'
 
 import { queue_item_status } from '../Queue/actions'
 
@@ -9,7 +9,6 @@ export default (baseSelector) =>{
 
   const queueSelectors = createQueueSelectors(createSelector(baseSelector,state=>state.queue))
   let {selectQueue} = queueSelectors.selectors
-//  const baseJobSelector = state=>{console.log('basejob',state); return state.jobs}
   const jobSelectors = {selectJobs}=  createJobSelectors(createSelector(baseSelector,state => state.jobs))
 
   const selectCurrentJob = createSelector(
