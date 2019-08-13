@@ -4,18 +4,13 @@ import  thunk                       from   'redux-thunk'
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
+import {reducer, ActionCreators , scheduler_status} from '../src/Scheduler'
 
 
-
-import {reducer,defaultActionCreators ,scheduler_status} from '../src/Scheduler'
-
-const ActionsCreators = defaultActionCreators();
-
-const  {set_scheduler_active,set_scheduler_inactive,set_current_job,dispatch_current_job,set_job_status} = ActionsCreators
+const  {set_scheduler_active,set_scheduler_inactive,set_current_job,dispatch_current_job,set_job_status} = ActionCreators
 
 
 test ('schedulerTest',()=>{
-
   let store = mockStore({})
   store.dispatch(set_scheduler_active());
 

@@ -1,27 +1,31 @@
 import {combineActionTypes,actionExpand,actionGroup} from '@geekagency/redux-action-types'
 
 import {
-  createActionCreators as createJobActionCreators,
-  job_status,
-  ActionTypes as jobActionTypes
+  makeActionCreators as makeJobActionCreators,
+  CONSTS as jobCONSTS,
+  makeActionTypes as makeJobActionTypes
 } from '../Job/actions'
 
+const {status : job_status} = jobCONSTS
+
 import {
-  createActionCreators as createQueueActionCreators,
-  ActionTypes as queueActionTypes
+  makeActionCreators as makeQueueActionCreators,
+  makeActionTypes as makeQueueActionTypes
 } from '../Queue/actions'
 
-export const scheduler_status ={
-  INACTIVE: 0,
-  ACTIVE: 1,
-  PAUSED: 2
-}
+export const CONSTS = {
+    status:{
+      INACTIVE: 0,
+      ACTIVE: 1,
+      PAUSED: 2
+    }
+  }
 
 export const makeActionCreators =  (ActionTypes)=>{
 
-  const jobActionCreators = createJobActionCreators(ActionTypes.job);
+  const jobActionCreators = makeJobActionCreators(ActionTypes.job);
   const {set_job_status,create_job} = jobActionCreators
-  const queueActionCreators = createQueueActionCreators(ActionTypes.queue);
+  const queueActionCreators = makeQueueActionCreators(ActionTypes.queue);
 
   const set_current_job =(job_id)=>{
     return {type:ActionTypes.SET_CURRENT_JOB,payload:job_id}
@@ -48,15 +52,17 @@ export const makeActionCreators =  (ActionTypes)=>{
 
 }
 
-const schedulerActionExpand = actionExpand(Object.keys(scheduler_status))
 
-/*pure actiontypes*/
-export const ActionTypes  = combineActionTypes(
-  schedulerActionExpand('SCHEDULER'),
+const schedulerStatusActionExpand = actionExpand(Object.keys(CONSTS.status))
+
+export const makeActionTypes  = combineActionTypes(
+  schedulerStatusActionExpand('SCHEDULER'),
   'SET_SCHEDULER_CONCURRENCY',
   'SET_MAX_QUEUE_RETRY',
   'SET_CURRENT_JOB',
   'CLEAR_CURRENT_JOB',
-  actionGroup('job')(jobActionTypes),
-  actionGroup('queue')(queueActionTypes)
+  actionGroup('job')(makeJobActionTypes),
+  actionGroup('queue')(makeQueueActionTypes)
 )
+
+export default makeActionCreators(makeActionTypes())

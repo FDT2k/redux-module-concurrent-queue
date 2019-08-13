@@ -26,6 +26,8 @@ test ('Create a job',()=>{
   expect(store.getActions()).toEqual(expectedActions)
 })
 
+
+
 test ('Create a job with any properties',()=>{
 
   let store = mockStore({})

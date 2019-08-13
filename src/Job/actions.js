@@ -1,15 +1,17 @@
 import {combineActionTypes} from '@geekagency/redux-action-types'
 
 
-export const job_status ={
+export const CONSTS= {
+  status :{
     EMPTY:0,
     QUEUE:1,
     ACTIVE:2,
     DONE:4,
     ERROR:8
   }
+}
 
-export const createActionCreators = (ActionTypes)=>{
+export const makeActionCreators = (ActionTypes)=>{
 
   const set_job_status = (job_id,status) =>{
     return {type: ActionTypes.SET_JOB_STATUS,payload:{job_id,status}}
@@ -22,9 +24,9 @@ export const createActionCreators = (ActionTypes)=>{
   return {set_job_status,create_job}
 }
 
-export const ActionTypes = combineActionTypes(
+export const makeActionTypes = combineActionTypes(
   'CREATE_JOB',
   'SET_JOB_STATUS'
 )
 
-export const getActionCreators = ()=>createActionCreators(ActionTypes())
+export default makeActionCreators(makeActionTypes())

@@ -1,20 +1,22 @@
-import { createSelector } from 'reselect'
-import { scheduler_status } from  './actions'
-import  createJobSelectors  from '../Job/selectors'
-import  createQueueSelectors  from '../Queue/selectors'
-
-import { queue_item_status } from '../Queue/actions'
+import { createSelector }     from  'reselect'
+import { scheduler_status }   from  './actions'
+import  createJobSelectors    from  '../Job/selectors'
+import  createQueueSelectors  from  '../Queue/selectors'
+import { queue_item_status }  from  '../Queue/actions'
 
 export default (baseSelector) =>{
 
   const queueSelectors = createQueueSelectors(createSelector(baseSelector,state=>state.queue))
-  const jobSelectors =  createJobSelectors(createSelector(baseSelector,state => state.jobs))
+  const jobSelectors =  createJobSelectors(createSelector(baseSelector,state=>state.jobs))
 
   const selectCurrentJob = createSelector(
     baseSelector,
     state => state.currentJob
   )
-
+  const schedulerStatus = createSelector(
+    baseSelector,
+    state => state.status
+  )
   const schedulerActive = createSelector(
     baseSelector,
     state => state.status ==scheduler_status.ACTIVE
@@ -39,7 +41,7 @@ export default (baseSelector) =>{
   )
 
   let {selectQueue} = queueSelectors.selectors
-  
+
 
   const selectCurrentJobQueue = createSelector(
     [selectQueue,selectCurrentJob],
@@ -72,6 +74,7 @@ export default (baseSelector) =>{
   return {selectors:{
             selectCurrentJobQueue,
             selectCurrentJob,
+            schedulerStatus,
             schedulerActive,
             selectActiveJob,
             schedulerConcurrency,
@@ -80,8 +83,8 @@ export default (baseSelector) =>{
             ...jobSelectors,
             ...queueSelectors.selectors
           },
-          creators:{
-            ...queueSelectors.creators
-          }
+            creators:{
+              ...queueSelectors.creators
+            }
           }
 }

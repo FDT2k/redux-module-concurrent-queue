@@ -1,10 +1,11 @@
 import {combineReducers}  from  'redux'
 import {createReducer,updateObject}  from  '@geekagency/redux-registry/Utils'
 
-import {scheduler_status}  from  './actions'
+import {CONSTS}  from  './actions'
 import makeJobReducer from  '../Job/reducer'
 import makeQueueReducer from  '../Queue/reducer'
 
+const {status : scheduler_status} = CONSTS
 
 export default (actionType,customHandlers={})=>{
 

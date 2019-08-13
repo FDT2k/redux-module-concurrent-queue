@@ -1,8 +1,20 @@
-import  makeJobReducer            from   './reducer'
-import  { getActionCreators, ActionTypes,job_status as js}        from   './actions'
-import makeSelectors from './selectors'
-export const ActionsCreators = getActionCreators()
-export const reducer = makeJobReducer(ActionTypes())
-export const job_status = js
+import makeReducer        from './reducer'
+import  * as actions         from './actions'
+import defaultActionCreators from './actions'
+import makeSelectors         from './selectors'
 
+let  { makeActionCreators, makeActionTypes,CONSTS}   = actions
+
+export const ActionsCreators = defaultActionCreators
+export const reducer = makeReducer(makeActionTypes())
+export const job_status = CONSTS.status
 export const selectors = makeSelectors(state=>state)
+
+export default {
+  makeActionTypes,
+  makeActionCreators,
+  makeReducer,
+  makeSelectors,
+  job_status,
+  CONSTS
+}

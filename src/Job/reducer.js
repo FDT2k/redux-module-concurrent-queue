@@ -2,7 +2,7 @@ import {combineReducers} from 'redux'
 
 import {createReducer,updateObject} from '@geekagency/redux-registry/Utils'
 
-import {job_status} from './actions'
+import {CONSTS} from './actions'
 
 const makeReducer =  (actionType,customHandlers={})=>{
 
@@ -10,7 +10,7 @@ const makeReducer =  (actionType,customHandlers={})=>{
     queue: 0,
     map:{},
     delimiter:';',
-    status: job_status.EMPTY
+    status: CONSTS.status.EMPTY
   }
 
   const defaultHandlers = {
@@ -22,6 +22,7 @@ const makeReducer =  (actionType,customHandlers={})=>{
         }
       )
     },
+    
     set_status : (state,{payload})=>{
       let {job_id,status} = payload;
       let job = state[job_id];

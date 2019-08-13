@@ -1,6 +1,8 @@
 import {createReducer,updateObject,updateItemInArray} from '@geekagency/redux-registry/Utils'
 
-import {queue_item_status} from './actions'
+import { CONSTS } from './actions'
+
+
 
 const makeReducer = (actionTypes,customHandlers={})=>{
 
@@ -15,7 +17,7 @@ const makeReducer = (actionTypes,customHandlers={})=>{
         data: payload.data,
         error_count: 0,
         seq: payload.seq,
-        status: queue_item_status.QUEUE_ITEM_STATUS_IDLE
+        status: CONSTS.status.QUEUE_ITEM_STATUS_IDLE
       }
     },
     queue_error: (state,{payload})=>{

@@ -1,13 +1,15 @@
 import {combineActionTypes} from '@geekagency/redux-action-types'
 
-export const queue_item_status ={
-  QUEUE_ITEM_STATUS_IDLE:0,
-  QUEUE_ITEM_STATUS_PROCESSING:1,
-  QUEUE_ITEM_STATUS_ERROR:2,
-  QUEUE_ITEM_STATUS_DONE:4,
+export const CONSTS={
+  status :{
+    QUEUE_ITEM_STATUS_IDLE:0,
+    QUEUE_ITEM_STATUS_PROCESSING:1,
+    QUEUE_ITEM_STATUS_ERROR:2,
+    QUEUE_ITEM_STATUS_DONE:4,
+  }
 }
 
-export const createActionCreators = (ActionTypes)=>{
+export const makeActionCreators = (ActionTypes)=>{
 
   const add_job_queue = (payload,meta={})=>{
     if(!payload.job_id){
@@ -30,7 +32,7 @@ export const createActionCreators = (ActionTypes)=>{
   const queue_handling_error = queue =>{
     return dispatch => {
       dispatch(queue_error(queue.job_id,queue.seq))
-      dispatch(queue_item_set_status(queue.job_id,queue.seq, queue_item_status.QUEUE_ITEM_STATUS_ERROR))
+      dispatch(queue_item_set_status(queue.job_id,queue.seq, CONSTS.status.QUEUE_ITEM_STATUS_ERROR))
 
     }
   }
@@ -39,6 +41,6 @@ export const createActionCreators = (ActionTypes)=>{
 
 }
 
-export const ActionTypes = combineActionTypes('ADD_JOB_QUEUE','SLICE_FROM_QUEUE','QUEUE_ERROR','QUEUE_ITEM_SET_STATUS')
+export const makeActionTypes = combineActionTypes('ADD_JOB_QUEUE','SLICE_FROM_QUEUE','QUEUE_ERROR','QUEUE_ITEM_SET_STATUS')
 
-export const getActionCreators =  ()=>createActionCreators(ActionTypes())
+export default makeActionCreators(makeActionTypes())

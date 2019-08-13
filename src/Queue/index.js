@@ -1,6 +1,20 @@
-import  makeReducer            from   './reducer'
-import  { getActionCreators, ActionTypes, queue_item_status as qs}        from   './actions'
+import  makeReducer               from   './reducer'
+import  * as actions              from   './actions'
+import  defaultActionCreators     from   './actions'
+import  makeSelectors             from   './selectors'
 
-export const ActionsCreators = getActionCreators()
-export const reducer = makeReducer(ActionTypes())
-export const queue_item_status = qs
+const  {makeActionCreators, makeActionTypes, CONSTS } = actions;
+
+export const ActionCreators     = defaultActionCreators
+export const reducer            = makeReducer(makeActionTypes())
+export const queue_item_status  = CONSTS.status
+
+
+export default {
+  makeActionTypes,
+  makeActionCreators,
+  makeReducer,
+  makeSelectors,
+  queue_item_status,
+  CONSTS
+}
