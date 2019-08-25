@@ -7,14 +7,8 @@ import {CONSTS} from './actions'
 import makeJobReducer from './reducer_job'
 
 const makeReducer =  (actionType,customHandlers={})=>{
-  const reducerJob = makeJobReducer(actionType);
 
-  const default_job = {
-    queue: 0,
-    map:{},
-    delimiter:';',
-    status: CONSTS.status.EMPTY
-  }
+  const reducerJob = makeJobReducer(actionType);
 
   const defaultHandlers = {
 
