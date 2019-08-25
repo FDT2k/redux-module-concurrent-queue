@@ -4,10 +4,7 @@ import {createReducer,updateObject} from '@geekagency/redux-registry/Utils'
 
 import {CONSTS} from './actions'
 
-import makeJobReducer from './reducer_job'
-
 const makeReducer =  (actionType,customHandlers={})=>{
-  const reducerJob = makeJobReducer(actionType);
 
   const default_job = {
     queue: 0,
@@ -18,19 +15,14 @@ const makeReducer =  (actionType,customHandlers={})=>{
 
   const defaultHandlers = {
 
-    create : (state,action)=>{
-      let {_id} = action.payload
-      return updateObject(state,{
-          [_id]: reducerJob(undefined,action)
-        }
-      )
+    create : (state,{payload})=>{
+      return updateObject(default_job,payload)
+
     },
 
-    set_status : (state,action)=>{
-      let {job_id} = action.payload;
-      return updateObject(state,{
-        [job_id]: reducerJob(state[job_id],action)
-      });
+    set_status : (state,{payload})=>{
+      let {status} = payload;
+      return updateObject(state,{status});
     }
 
   }

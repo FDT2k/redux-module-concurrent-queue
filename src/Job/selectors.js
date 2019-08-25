@@ -1,7 +1,8 @@
 import { createSelector }  from 'reselect'
 
 
-import {job_status} from './actions'
+import {CONSTS as jCONSTS} from './actions'
+let job_status =jCONSTS.status;
 
 export default (baseSelector) =>{
 
