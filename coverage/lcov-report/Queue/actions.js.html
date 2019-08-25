@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/18</span>
+        <span class='fraction'>18/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">14.29% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/7</span>
+        <span class='fraction'>7/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/18</span>
+        <span class='fraction'>18/18</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -105,33 +105,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">107x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,28 +151,28 @@ export const CONSTS={
 &nbsp;
 export const makeActionCreators = (ActionTypes)=&gt;{
 &nbsp;
-  const add_job_queue = <span class="fstat-no" title="function not covered" >(p</span>ayload,meta=<span class="branch-0 cbranch-no" title="branch not covered" >{})</span>=&gt;{
-<span class="cstat-no" title="statement not covered" >    if(!payload.job_id){</span>
-<span class="cstat-no" title="statement not covered" >      throw new Error('need at least a job id')</span>
+  const add_job_queue = (payload,meta={})=&gt;{
+    if(!payload.job_id){
+      throw new Error('need at least a job id')
     }
-<span class="cstat-no" title="statement not covered" >    return {type:ActionTypes.ADD_JOB_QUEUE,payload,meta}</span>
+    return {type:ActionTypes.ADD_JOB_QUEUE,payload,meta}
   }
 &nbsp;
-  const slice_from_queue = <span class="fstat-no" title="function not covered" >(j</span>ob_id,count)=&gt;{
-<span class="cstat-no" title="statement not covered" >    return {type:ActionTypes.SLICE_FROM_QUEUE,payload:{job_id,count}}</span>
+  const slice_from_queue = (job_id,count)=&gt;{
+    return {type:ActionTypes.SLICE_FROM_QUEUE,payload:{job_id,count}}
   }
 &nbsp;
-  const queue_error = <span class="fstat-no" title="function not covered" >(j</span>ob_id,seq,error=<span class="branch-0 cbranch-no" title="branch not covered" >'')</span>=&gt;{
-<span class="cstat-no" title="statement not covered" >    return {type:ActionTypes.QUEUE_ERROR,payload:{job_id,seq,error}}</span>
+  const queue_error = (job_id,seq,error='')=&gt;{
+    return {type:ActionTypes.QUEUE_ERROR,payload:{job_id,seq,error}}
   }
-  const queue_item_set_status = <span class="fstat-no" title="function not covered" >(j</span>ob_id,seq,status=<span class="branch-0 cbranch-no" title="branch not covered" >0)</span>=&gt;{
-<span class="cstat-no" title="statement not covered" >    return {type:ActionTypes.QUEUE_ITEM_SET_STATUS,payload:{job_id,seq,status}}</span>
+  const queue_item_set_status = (job_id,seq,status=<span class="branch-0 cbranch-no" title="branch not covered" >0)</span>=&gt;{
+    return {type:ActionTypes.QUEUE_ITEM_SET_STATUS,payload:{job_id,seq,status}}
   }
 &nbsp;
-  const queue_handling_error = <span class="fstat-no" title="function not covered" >qu</span>eue =&gt;{
-<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >di</span>spatch =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(queue_error(queue.job_id,queue.seq))</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(queue_item_set_status(queue.job_id,queue.seq, CONSTS.status.QUEUE_ITEM_STATUS_ERROR))</span>
+  const queue_handling_error = queue =&gt;{
+    return dispatch =&gt; {
+      dispatch(queue_error(queue.job_id,queue.seq))
+      dispatch(queue_item_set_status(queue.job_id,queue.seq, CONSTS.status.QUEUE_ITEM_STATUS_ERROR))
 &nbsp;
     }
   }
@@ -190,7 +190,7 @@ export default makeActionCreators(makeActionTypes())
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Aug 13 2019 10:04:02 GMT+0200 (Central European Summer Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Aug 25 2019 11:03:33 GMT+0200 (Central European Summer Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

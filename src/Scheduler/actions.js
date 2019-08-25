@@ -1,4 +1,4 @@
-import {combineActionTypes,actionExpand,actionGroup} from '@geekagency/redux-action-types'
+import {combineActionTypes,expandSuffix,groupAs} from '@geekagency/redux-action-types'
 
 import {
   makeActionCreators as makeJobActionCreators,
@@ -53,7 +53,7 @@ export const makeActionCreators =  (ActionTypes)=>{
 }
 
 
-const schedulerStatusActionExpand = actionExpand(Object.keys(CONSTS.status))
+const schedulerStatusActionExpand = expandSuffix(Object.keys(CONSTS.status))
 
 export const makeActionTypes  = combineActionTypes(
   schedulerStatusActionExpand('SCHEDULER'),
@@ -61,8 +61,9 @@ export const makeActionTypes  = combineActionTypes(
   'SET_MAX_QUEUE_RETRY',
   'SET_CURRENT_JOB',
   'CLEAR_CURRENT_JOB',
-  actionGroup('job')(makeJobActionTypes),
-  actionGroup('queue')(makeQueueActionTypes)
+  groupAs('job')(makeJobActionTypes),
+  groupAs('queue')(makeQueueActionTypes)
 )
+
 
 export default makeActionCreators(makeActionTypes())
