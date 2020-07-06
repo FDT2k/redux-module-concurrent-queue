@@ -1,5 +1,5 @@
 import {combineReducers}  from  'redux'
-import {createReducer,updateObject}  from  '@geekagency/redux-registry/Utils'
+import {createReducer,updateObject}  from  '@geekagency/redux-registry/LegacyUtils'
 
 import {CONSTS}  from  './actions'
 import makeJobReducer from  '../Job/reducer'

@@ -1,4 +1,4 @@
-import {createReducer,updateObject,updateItemInArray} from '@geekagency/redux-registry/Utils'
+import {createReducer,updateObject,updateItemInArray} from '@geekagency/redux-registry/LegacyUtils'
 
 import { CONSTS } from './actions'
 

@@ -1,12 +1,12 @@
 {
   "name": "@geekagency/redux-module-concurrent-queue",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "description": "Redux module to manage a concurrent job queue",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf ./lib; node_modules/@babel/cli/bin/babel.js --out-dir lib ./src && node lib/index.js && cp package.json ./lib",
     "build:raw": "rm -rf ./lib; cp -a ./src ./lib && node lib/index.js && cp package.json ./lib",
-    "pub": "cd ./lib;npm publish; cd ..",
+    "pub": "cd ./lib;yarn publish; cd ..",
     "test": "npx jest --coverage && npx jest-coverage-badges"
   },
   "keywords": [
@@ -17,7 +17,7 @@
   "dependencies": {
     "@geekagency/composite-js": "^0.4.3",
     "@geekagency/redux-action-types": "^1.4.0",
-    "@geekagency/redux-registry": "^1.2.11",
+    "@geekagency/redux-registry": "^4.0.6",
     "@geekagency/redux-reselect": "^1.0.7",
     "reselect": "^4.0.0"
   },
@@ -34,7 +34,8 @@
     "eslint": "^5.16.0",
     "jest": "^24.8.0",
     "jest-coverage-badges": "^1.1.2",
-    "redux-mock-store": "^1.5.3"
+    "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4"
   },
   "author": "Fabien Di Tore",
   "license": "MIT",
